@@ -22,7 +22,7 @@ public class ProductsController {
   @Autowired
   private ProductsService productsService;
 
-  @GetMapping(path = "/", produces = "application/json")
+  @GetMapping(path = "", produces = "application/json")
   public List<Products> getProducts() {
     return productsService.allProducts();
   }

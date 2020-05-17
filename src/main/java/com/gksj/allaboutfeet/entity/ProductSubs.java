@@ -1,5 +1,6 @@
 package com.gksj.allaboutfeet.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +10,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "allaboutfeet_productsubs")
-public class ProductSubs {
+public class ProductSubs implements Serializable {
 
   @Column(name = "pid")
   @Id

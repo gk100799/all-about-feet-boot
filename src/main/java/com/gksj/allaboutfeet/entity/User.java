@@ -12,11 +12,9 @@ import lombok.Data;
 @Table(name = "allaboutfeet_user")
 public class User implements Serializable {
 
-  @Column(name = "id")
-  @Id
-  private Integer id;
 
   @Column(name = "username")
+  @Id
   private String username;
 
   @Column(name = "password")
@@ -26,7 +24,7 @@ public class User implements Serializable {
   private String first_name;
 
   @Column(name = "last_name")
-  private String lastname;
+  private String last_name;
 
   @Column(name = "email")
   private String email;

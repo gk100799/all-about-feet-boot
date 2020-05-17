@@ -24,12 +24,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
       FilterChain chain)
       throws ServletException, IOException {
-    if (request.getMethod().equals("OPTIONS")) {
+    if (request.getMethod().equals("OPTIONS") || request.getServletPath().equalsIgnoreCase("/user/login") || request.getServletPath()
+        .equalsIgnoreCase("/user/signup")) {
       chain.doFilter(request, response);
       return;
     }
-    else if (!request.getServletPath().equalsIgnoreCase("/user/login") && !request.getServletPath()
-        .equalsIgnoreCase("/user/signup")) {
+
+    else if (request.getHeader("Authorization") != null) {
       final String requestTokenHeader = request.getHeader("Authorization");
       String username = null;
       String jwtToken = null;

@@ -11,6 +11,13 @@ public class UserService {
   @Autowired
   UserRepository userRepository;
 
+  public Boolean alreadyExists(String username){
+    if(userRepository.userExists(username)==1){
+        return Boolean.TRUE;
+    }
+    return Boolean.FALSE;
+  }
+
   public void createUser(User user) {
     userRepository.save(user);
   }
