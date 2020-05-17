@@ -25,7 +25,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
       FilterChain chain)
       throws ServletException, IOException {
     if (request.getMethod().equals("OPTIONS") || request.getServletPath().equalsIgnoreCase("/user/login") || request.getServletPath()
-        .equalsIgnoreCase("/user/signup")) {
+        .equalsIgnoreCase("/user/signup") || request.getServletPath().equalsIgnoreCase("/products")) {
       chain.doFilter(request, response);
       return;
     }

@@ -26,8 +26,9 @@ public class User implements Serializable {
   @Column(name = "last_name")
   private String last_name;
 
-  @Column(name = "email")
-  private String email;
+//  @Column(name = "email")
+//  private String email;
+
 //    public List<GrantedAuthority> getAuthorities(){
 //        return null;
 //    }
