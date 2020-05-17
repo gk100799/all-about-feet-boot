@@ -1,16 +1,17 @@
 package com.gksj.allaboutfeet.models;
 
 import java.io.Serializable;
+
 public class JwtResponse implements Serializable {
 
-    private final String jwttoken;
+  private final String jwttoken;
 
-    public JwtResponse(String jwttoken) {
-        this.jwttoken = jwttoken;
-    }
+  public JwtResponse(String jwttoken) {
+    this.jwttoken = jwttoken;
+  }
 
-    public String getToken() {
-        return this.jwttoken;
-    }
+  public String getToken() {
+    return this.jwttoken;
+  }
 
 }
