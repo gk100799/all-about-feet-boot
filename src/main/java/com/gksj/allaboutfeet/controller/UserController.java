@@ -46,7 +46,7 @@ public class UserController {
     return ResponseEntity.ok(new JwtResponse(token));
   }
 
-  @PostMapping(path = "/signup")
+  @PostMapping(path = "/currentuser")
   public ResponseEntity<JwtResponse> currentUser(@RequestHeader String token) {
     final String user = jwtTokenUtil.getUsernameFromToken(token);
     return ResponseEntity.ok(new JwtResponse(token));

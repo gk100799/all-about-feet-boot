@@ -20,6 +20,11 @@ public class ProductsService {
     return list;
   }
 
+  public List<Products> filteredProducts(ArrayList<String> brands, ArrayList<String> styles,
+      ArrayList<String> colors) {
+    return productsRepository.filterProducts(brands, styles, colors);
+  }
+
   public Optional<Products> getProduct(Integer pid) {
     return productsRepository.findById(pid);
   }

@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-  //    @Query("SELECT id,username FROM allaboutfeet_user WHERE username = ?1")
   List<User> findByUsername(String username);
 
 }

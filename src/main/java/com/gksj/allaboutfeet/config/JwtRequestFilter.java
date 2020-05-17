@@ -24,11 +24,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
       FilterChain chain)
       throws ServletException, IOException {
-    final String requestTokenHeader = request.getHeader("Authorization");
-    String username = null;
-    String jwtToken = null;
-    if (!request.getServletPath().equalsIgnoreCase("/user/login") && !request.getServletPath()
+    if (request.getMethod().equals("OPTIONS")) {
+      chain.doFilter(request, response);
+      return;
+    }
+    else if (!request.getServletPath().equalsIgnoreCase("/user/login") && !request.getServletPath()
         .equalsIgnoreCase("/user/signup")) {
+      final String requestTokenHeader = request.getHeader("Authorization");
+      String username = null;
+      String jwtToken = null;
       if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
         jwtToken = requestTokenHeader.substring(7);
         try {
@@ -48,6 +52,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
       } else {
         logger.warn("JWT Token does not begin with JWT String");
+        response.setStatus(401);
+        return;
       }
       if (username != null) {
         User userDetails = this.userService.getByUsername(username);
